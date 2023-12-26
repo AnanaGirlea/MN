@@ -1,0 +1,27 @@
+Nume: Girlea Anana Catalina
+Grupa: 333 CA
+
+Metode Numerice
+Tema 2
+
+Am rezolvat tema urmarind documentul cu cerinta pas cu pas si implementand
+fiecare TODO din codul schelet.
+Am implemetnat toate cerintele temei.
+
+Am observat ca in functia classifyImage pot ajunge la rezultatul corect
+in 2 moduri:
+Mod 1) Calculez media colanelor folosind mean(train_mat, 1), caz in care nu
+mai modific im
+Apelul va arata asa:
+  prediction = KNN(train_val, train, dim, k);
+
+Modul 2) Iau media coloanelor din apelul functiei magic_with_pca, caz in care
+modific im = im * Vk
+Apelul va arata asa:
+  prediction = KNN(train_val, Y, dim, k);
+
+Acest lucru se intampla deoarece (in functia magic_with_pca)
+Y = train * Vk;
+train = Y * Vk';
+=> train = train * Vk * Vk';
+=> daca apelam functia KNN cu train nu mai trebuie schimbata baza im

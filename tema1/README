@@ -1,0 +1,35 @@
+Anana Catalina Girlea 333CA - Tema1
+
+Task1:
+	- pentru matricea de adiacenta, am utilizat doi vectori de directii care sa imi genereze cei 4 vecini. 
+	Aceste directii corespund fix directiilor peretilor, pentru verificarea usoara a existentei unei legaturi
+	- pentru matricea de link, am numarat intai numarul de vecini ai fiecarui nod, iar apoi am impartit linia
+  sa din matricea de adiacenta la numarul de vecini
+	- pentru parametrii de iteratie ai metodei Jacobi, pentru J am extras matricea fara ultimele 2 linii/coloane,
+	aceste intrari formand sistemul de ecuatii intre noduri, iar pentru c am extras penultima coloana, fara ultimele
+	2 linii, aceste intrari fiind probabilitatea de succes imediata din fiecare nod, deci constantele din sistem
+	- perform iterative aplica metoda Jacobi
+	- heuristic greedy implementeaza algoritmul euristic conform descrierii din enunt
+	- decodarea este facuta folosind faptul ca indice = (linie * num_coloane) + coloana
+
+Task2:
+	- functiile de cost_function implementeaza direct formulele din enunt
+	- functia gradient_descent calculeaza la fiecare pas vectorul gradient al functiei conform
+	formulei din enunt, iar apoi modifica Theta cu un pas alpha inspre minim
+	- functia normal_equation e bazata pe scrierea ecuatiei
+		Theta = (X^t X)^-1 X^tY sub forma (X^t X)Theta = X^tY, ceea ce este un sistem de ecuatii
+		verifica valorile proprii ale lui A pentru a fi pozitiv definita, iar apoi implementeaza
+		metoda gradientului conjugat conform codului din enunt
+
+
+Task3:
+	- functiile de parsare si de initializare - implementeaza direct cerinta
+	- pentru functia de cost, am facut initial o varianta care itera prin fiecare linie a matricei
+  X si urma pasii din enunt, insa am observat ca era foarte lenta, asa ca am vectorizat complet
+	toate operatiile. Denumirile variabilelor si pasii urmati sunt aceia din enunt, de la forward 
+	propagation, iar apoi back propagation. Doua chestii la care am avut grija au fost faptul
+	ca labelul Y = 3 trebuie transformat intr-un vector [0 0 1 0 0 0 0 0 0 0]', iar faptul ca 
+	h0 din functia de cost este de fapt chiar a3 - activarile nodurilor din layer-ul de output
+	- pentru predicite, am incercat sa fac pasii din forward propagation si sa extrag activarea
+	maxima a unui nod din layer-ul de output, insa obtin predictii gresite. Pare ca vectorul
+	de ponderi nu converge suficient in cele 100 de iteratii
